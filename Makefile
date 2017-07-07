@@ -75,6 +75,9 @@ war-build-geoserver-geofence: build-deps
 war-build-gn3:
 	./mvn clean install -f geonetwork/pom.xml -DskipTests
 
+war-build-mapfishapp:
+	./mvn -Dmaven.test.skip=true -P-all,mapfishapp clean install
+
 war-build-georchestra: war-build-gn3 war-build-geoserver
 	./mvn -Dmaven.test.skip=true clean install
 
