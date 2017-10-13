@@ -19,13 +19,19 @@
         ignore-resource-not-found="true" ignore-unresolvable="true" order="1" />
 
     <s:http entry-point-ref="casProcessingFilterEntryPoint" request-matcher="regex" realm="${realmName}" disable-url-rewriting="true">
+        <s:custom-filter ref="blacklistProxyTargets" after="FIRST" />
 	    <s:custom-filter ref="basicAuthChallengeByUserAgent" before="CAS_FILTER" />
 	    <s:custom-filter ref="casFilter" after="CAS_FILTER" />
         <s:custom-filter ref="filterSecurityInterceptor" after="EXCEPTION_TRANSLATION_FILTER" />
 	    <!--  <s:http-basic />  -->
+
 	    <s:anonymous granted-authority="ROLE_ANONYMOUS" />
 	    <s:logout logout-success-url="${logout-success-url}" />
      </s:http>
+
+    <bean id="blacklistProxyTargets" class="org.georchestra.security.BlacklistProxyTargetsFilter">
+    <constructor-arg type="java.lang.String" value="${blacklistedHosts}" />
+    </bean>
 
 	<bean id="filterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
 		<property name="authenticationManager" ref="authenticationManager" />
