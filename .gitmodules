@@ -52,3 +52,6 @@
 [submodule "docker/smtp"]
 	path = docker/smtp
 	url = https://github.com/camptocamp/docker_smtp.git
+[submodule "geoserver/geoserver-submodule"]
+	path = geoserver/geoserver-submodule
+	url = https://github.com/georchestra/geoserver.git
