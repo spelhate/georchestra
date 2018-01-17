@@ -31,7 +31,7 @@ import org.georchestra.mapfishapp.model.ConnectionPool;
 
 public class MVIEWERDocService extends A_DocService {
 
-    public static final String FILE_EXTENSION = ".xml";
+    public static final String FILE_EXTENSION = ".mvr";
     public static final String MIME_TYPE = "application/xml";
 
     public MVIEWERDocService(final String tempDir, ConnectionPool pgpool) {
